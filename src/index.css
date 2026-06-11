@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-light text-brand-dark antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent horizontal overflow on mobile */
+    overflow-x: hidden;
+    /* Smoother touch scrolling */
+    -webkit-overflow-scrolling: touch;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  /* Larger tap targets for mobile */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  /* Remove tap highlight on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ── Scrollbar — only visible on desktop ── */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-brand-dark; }
+  ::-webkit-scrollbar-thumb { @apply bg-brand-gold/60 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-brand-gold; }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Prevent text size adjustment on orientation change */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ── Gold shimmer text ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.gold-shimmer {
+  background: linear-gradient(90deg, #E05D26 0%, #FF8A50 25%, #E05D26 50%, #FF8A50 75%, #E05D26 100%);
+  background-size: 200% 100%;
+  animation: shimmer 4s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Floating glow — reduced motion on mobile ── */
+@keyframes float-glow {
+  0%, 100% { box-shadow: 0 0 30px rgba(224, 93, 38, 0.08), 0 15px 40px rgba(10, 28, 18, 0.08); }
+  50% { box-shadow: 0 0 40px rgba(224, 93, 38, 0.15), 0 20px 50px rgba(10, 28, 18, 0.12); }
+}
+.float-glow { animation: float-glow 4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .float-glow { animation: none; }
+  .gold-shimmer { animation: none; -webkit-text-fill-color: #E05D26; }
+}
+
+/* ── Grain overlay — desktop only for perf ── */
+@media (min-width: 768px) {
+  .grain-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+/* ── Ornament divider ── */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #E05D26, transparent);
+}
+
+/* ── Glass card ── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(224, 93, 38, 0.12);
+}
+
+/* ── Bento card — touch-optimized ── */
+.bento-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Ensure smooth scrolling on mobile */
+  will-change: transform;
+}
+@media (min-width: 768px) {
+  .bento-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(10, 28, 18, 0.12), 0 0 0 1px rgba(224, 93, 38, 0.15);
+  }
+}
+/* On mobile, use active state instead of hover */
+@media (max-width: 767px) {
+  .bento-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ── Comparison table ── */
+.comparison-row:nth-child(even) {
+  background: rgba(224, 93, 38, 0.03);
+}
+
+/* ── Category pill active ── */
+.category-pill-active {
+  background: #0A1C12;
+  color: #FF8A50;
+  box-shadow: 0 4px 15px rgba(10, 28, 18, 0.3);
+}
+
+/* ── Mobile sticky bottom bar ── */
+.mobile-sticky-bar {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ── Horizontal scroll snap for mobile product cards ── */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-snap-x > * {
+  scroll-snap-align: start;
+}
+
+/* ── Hide scrollbar on horizontal scroll containers ── */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
