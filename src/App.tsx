@@ -48,7 +48,7 @@ const bentoFeatures = [
    EMBLEM 3D
    ═══════════════════════════════════════════ */
 function Emblem3D(props: any) {
-  const texture = useTexture('/logo-3d-transparent.png');
+  const texture = useTexture(import.meta.env.BASE_URL + 'logo-3d-transparent.png');
   const ref = useRef<THREE.Mesh>(null);
   
   useFrame((state) => {
