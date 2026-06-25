@@ -434,13 +434,21 @@ function App() {
                     transition={{ duration: 0.3 }}
                     className="glass-card rounded-xl md:rounded-2xl overflow-hidden group"
                   >
-                    {/* Color swatch header */}
-                    <div className="h-24 md:h-32 relative overflow-hidden flex items-center justify-center"
-                      style={{ background: `linear-gradient(135deg, ${product.liquidColor}22, ${product.accentColor}33)` }}
+                    {/* Color swatch or Image header */}
+                    <div className="aspect-square w-full relative overflow-hidden flex items-center justify-center bg-brand-light"
+                      style={!product.imageUrl ? { background: `linear-gradient(135deg, ${product.liquidColor}22, ${product.accentColor}33)` } : undefined}
                     >
-                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-full shadow-lg"
-                        style={{ background: `radial-gradient(circle at 35% 35%, ${product.accentColor}, ${product.liquidColor})` }}
-                      />
+                      {product.imageUrl ? (
+                        <img 
+                          src={`${import.meta.env.BASE_URL}${product.imageUrl}`} 
+                          alt={product.name} 
+                          className="w-full h-full object-cover object-center scale-105 group-hover:scale-110 transition-transform duration-700 ease-out" 
+                        />
+                      ) : (
+                        <div className="w-20 h-20 md:w-24 md:h-24 rounded-full shadow-lg opacity-90"
+                          style={{ background: `radial-gradient(circle at 35% 35%, ${product.accentColor}, ${product.liquidColor})` }}
+                        />
+                      )}
                     </div>
 
                     <div className="p-3.5 md:p-5">

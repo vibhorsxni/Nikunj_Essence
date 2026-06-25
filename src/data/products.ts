@@ -12,6 +12,7 @@ export interface Product {
   category: 'attar' | 'floral-water' | 'raw-material' | 'dhoop';
   liquidColor: string;
   accentColor: string;
+  imageUrl?: string;
   variants: ProductVariant[];
   benefits: string[];
   notes: { top: string; heart: string; base: string };
@@ -24,14 +25,14 @@ export const products: Product[] = [
     id: 'sandal-attar',
     name: 'Sandal',
     tagline: 'Liquid Gold of Mysore',
-    description: 'Pure sandalwood oil aged to perfection. A deeply grounding, creamy, and meditative fragrance that forms the heart of our Kannauj heritage.',
+    description: 'A royal, velvety, and long-lasting fragrance. Pure sandalwood oil aged to perfection. A deeply grounding and meditative scent that forms the heart of our Kannauj heritage.',
     category: 'attar',
     liquidColor: '#E05D26',
     accentColor: '#FF8A50',
     variants: [
-      { size: '12ml', price: 2500, unit: 'ml' },
-      { size: '25ml', price: 5000, unit: 'ml' },
-      { size: '100ml', price: 19500, unit: 'ml' }
+      { size: '3ml', price: 510, unit: 'ml' },
+      { size: '6ml', price: 980, unit: 'ml' },
+      { size: '10ml', price: 1600, unit: 'ml' }
     ],
     benefits: ['100% natural', 'alcohol-free', 'grounding'],
     notes: { top: 'Soft Wood', heart: 'Creamy Sandalwood', base: 'Earthy Musk' },
@@ -41,14 +42,14 @@ export const products: Product[] = [
     id: 'rose-attar',
     name: 'Rose',
     tagline: 'Queen of Flowers',
-    description: 'Distilled from thousands of pure Damask roses. An opulent, romantic, and intensely floral attar that captures the true essence of love.',
+    description: 'Royal and classic, a true symbol of love and peace. Distilled from thousands of pure Damask roses. An opulent, romantic, and intensely floral attar.',
     category: 'attar',
     liquidColor: '#d63447',
     accentColor: '#e8637a',
     variants: [
-      { size: '12ml', price: 2100, unit: 'ml' },
-      { size: '25ml', price: 4200, unit: 'ml' },
-      { size: '100ml', price: 16500, unit: 'ml' }
+      { size: '3ml', price: 510, unit: 'ml' },
+      { size: '6ml', price: 980, unit: 'ml' },
+      { size: '10ml', price: 1600, unit: 'ml' }
     ],
     benefits: ['100% natural', 'alcohol-free', 'mood-elevating'],
     notes: { top: 'Fresh Petals', heart: 'Damask Rose', base: 'Honeyed Musk' },
@@ -58,7 +59,7 @@ export const products: Product[] = [
     id: 'mogra-attar',
     name: 'Mogra',
     tagline: 'Twilight Blossom',
-    description: 'The intoxicating scent of Indian Jasmine Sambac. Sweet, heady, and deeply spiritual, harvested just as the sun sets over the Ganges.',
+    description: 'An intoxicating and sweet fragrance that acts as a natural mood booster. The heady scent of Indian Jasmine Sambac, harvested just as the sun sets over the Ganges.',
     category: 'attar',
     liquidColor: '#FF8A50',
     accentColor: '#E05D26',
@@ -75,14 +76,14 @@ export const products: Product[] = [
     id: 'jasmine-attar',
     name: 'Jasmine',
     tagline: 'Star of the Night',
-    description: 'A delicate yet powerfully seductive night-blooming jasmine attar. Pure, exotic, and wonderfully vibrant.',
+    description: 'An intoxicating and sweet fragrance that acts as a natural mood booster. A delicate yet powerfully seductive night-blooming jasmine attar.',
     category: 'attar',
     liquidColor: '#FDF8EC',
     accentColor: '#FF8A50',
     variants: [
-      { size: '12ml', price: 1900, unit: 'ml' },
-      { size: '25ml', price: 3800, unit: 'ml' },
-      { size: '100ml', price: 14800, unit: 'ml' }
+      { size: '3ml', price: 510, unit: 'ml' },
+      { size: '6ml', price: 980, unit: 'ml' },
+      { size: '10ml', price: 1600, unit: 'ml' }
     ],
     benefits: ['100% natural', 'alcohol-free', 'sensual'],
     notes: { top: 'White Floral', heart: 'Jasmine Grandiflorum', base: 'Soft Musk' },
@@ -96,10 +97,11 @@ export const products: Product[] = [
     category: 'attar',
     liquidColor: '#1b4d3e',
     accentColor: '#2d7a5f',
+    imageUrl: 'ruh-khus-bottle.jpeg',
     variants: [
-      { size: '12ml', price: 900, unit: 'ml' },
-      { size: '25ml', price: 1800, unit: 'ml' },
-      { size: '100ml', price: 7000, unit: 'ml' }
+      { size: '3ml', price: 450, unit: 'ml' },
+      { size: '6ml', price: 900, unit: 'ml' },
+      { size: '10ml', price: 1500, unit: 'ml' }
     ],
     benefits: ['100% natural', 'alcohol-free', 'cooling'],
     notes: { top: 'Fresh Earth', heart: 'Vetiver Roots', base: 'Smoky Wood' },
@@ -109,14 +111,14 @@ export const products: Product[] = [
     id: 'lotus-attar',
     name: 'Lotus',
     tagline: 'Sacred Purity',
-    description: 'A rare and ethereal extract from pink lotus petals. Delicate, aquatic, and meditative — embodying the pure spirit of nature.',
+    description: 'Spiritual, calm, and divine. A rare and ethereal extract from pink lotus petals. Delicate, aquatic, and meditative.',
     category: 'attar',
     liquidColor: '#e091b0',
     accentColor: '#f0a8c4',
     variants: [
-      { size: '12ml', price: 2100, unit: 'ml' },
-      { size: '25ml', price: 4200, unit: 'ml' },
-      { size: '100ml', price: 16500, unit: 'ml' }
+      { size: '3ml', price: 510, unit: 'ml' },
+      { size: '6ml', price: 980, unit: 'ml' },
+      { size: '10ml', price: 1600, unit: 'ml' }
     ],
     benefits: ['100% natural', 'alcohol-free', 'spiritual'],
     notes: { top: 'Water Lily', heart: 'Pink Lotus', base: 'Soft Musk' },
