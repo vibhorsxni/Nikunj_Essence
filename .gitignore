@@ -25,3 +25,7 @@ dist-ssr
 
 # Local Netlify folder
 .netlify
+
+# Test artifacts
+playwright-report
+test-results
