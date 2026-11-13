@@ -101,7 +101,7 @@ export const products: Product[] = [
     category: 'attar',
     liquidColor: '#1b4d3e',
     accentColor: '#2d7a5f',
-    imageUrl: 'ruh-khus-bottle.jpeg',
+    imageUrl: 'khus-attar.jpg',
     variants: [
       { size: '3ml', price: 450, unit: 'ml' },
       { size: '6ml', price: 900, unit: 'ml' },
