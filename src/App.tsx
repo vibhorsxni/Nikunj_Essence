@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 
 import { FloatingParticles } from './components/FloatingParticles';
-import { AttarBottle } from './components/AttarBottle';
 import { CanvasErrorBoundary } from './components/CanvasErrorBoundary';
 import { CartDrawer } from './components/CartDrawer';
 import { ProductDetailModal } from './components/ProductDetailModal';
@@ -118,6 +117,14 @@ function App() {
 
   const heroProduct = products.find(p => p.id === 'khus-attar') || products[0];
   const showcaseProduct = products.find(p => p.id === activeShowcaseId) || heroProduct;
+  const showcaseDisplayName =
+    showcaseProduct.id === 'khus-attar'
+      ? 'Wild Khus Essence'
+      : showcaseProduct.id === 'rose-attar'
+      ? 'Damask Rose Essence'
+      : showcaseProduct.id === 'sandal-attar'
+      ? 'Mysore Sandal Essence'
+      : showcaseProduct.name;
 
   const getVariantIndex = (productId: string) => selectedVariant[productId] ?? 0;
 
@@ -456,74 +463,78 @@ function App() {
       <section id="collection" className="py-16 md:py-24 px-6 md:px-16 bg-brand-light">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-10 md:mb-16">
-            <p className="text-brand-gold text-[10px] md:text-xs uppercase tracking-[0.3em] mb-3 font-semibold">Interactive Presentation</p>
-            <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-dark">3D Fragrance Showcase</h2>
-            <p className="text-xs md:text-sm text-brand-dark/60 mt-2">Experience the crystalline bottle geometry and pure botanical liquid hues.</p>
+            <p className="text-brand-gold text-[10px] md:text-xs uppercase tracking-[0.3em] mb-3 font-semibold">Artisanal Distillation</p>
+            <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-dark">Signature Fragrance Showcase</h2>
+            <p className="text-xs md:text-sm text-brand-dark/60 mt-2">Authentic Kannauj attars steam-distilled from pure flowers, woods, and roots.</p>
           </motion.div>
 
           <div className="flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12">
-            {/* 3D Canvas with AttarBottle */}
-            <div className="w-full lg:w-1/2 h-[340px] sm:h-[420px] lg:h-[560px] bg-gradient-to-br from-brand-green/5 to-brand-gold/10 rounded-2xl lg:rounded-3xl overflow-hidden relative float-glow order-1 lg:order-2 border border-brand-gold/20 flex items-center justify-center">
-              <CanvasErrorBoundary
-                fallback={
-                  <div className="p-8 text-center flex flex-col items-center">
-                    <img src="/ruh-khus-bottle.jpeg" alt="Nikunj Essence Pure Attar Bottle" className="w-56 h-56 object-cover rounded-2xl shadow-xl mb-4 border border-brand-gold/20" />
-                    <p className="font-serif text-lg font-bold text-brand-dark">{showcaseProduct.name}</p>
-                    <p className="text-xs text-brand-gold font-medium">{showcaseProduct.tagline}</p>
-                  </div>
-                }
-              >
-                {hasWebGL ? (
-                  <Canvas
-                    camera={{ position: [0, 0, 4.2], fov: isMobile ? 40 : 42 }}
-                    dpr={isMobile ? [1, 1.5] : [1, 2]}
-                    performance={{ min: 0.5 }}
-                  >
-                    <ambientLight intensity={0.6} />
-                    <directionalLight position={[5, 6, 5]} intensity={1.5} />
-                    <spotLight position={[-4, 4, 3]} intensity={0.8} color="#FF8A50" />
-                    <Environment preset="studio" />
-                    <FloatingParticles count={isMobile ? 12 : 25} color="#E05D26" area={3.5} />
-                    <PresentationControls
-                      global
-                      rotation={[0, 0, 0]}
-                      polar={[-0.2, 0.2]}
-                      azimuth={[-Math.PI / 3, Math.PI / 3]}
-                      config={{ mass: 2, tension: 400 }}
-                    >
-                      <Suspense fallback={null}>
-                        <AttarBottle
-                          color={showcaseProduct.liquidColor}
-                          label={showcaseProduct.name}
-                          position={[0, -0.1, 0]}
-                        />
-                      </Suspense>
-                    </PresentationControls>
-                  </Canvas>
-                ) : (
-                  <div className="p-8 text-center flex flex-col items-center">
-                    <img src="/ruh-khus-bottle.jpeg" alt="Nikunj Essence Pure Attar Bottle" className="w-56 h-56 object-cover rounded-2xl shadow-xl mb-4 border border-brand-gold/20" />
-                    <p className="font-serif text-lg font-bold text-brand-dark">{showcaseProduct.name}</p>
-                    <p className="text-xs text-brand-gold font-medium">{showcaseProduct.tagline}</p>
-                  </div>
-                )}
-              </CanvasErrorBoundary>
+            {/* Luxury Product Highlight Stage */}
+            <div className="w-full lg:w-1/2 min-h-[400px] sm:min-h-[480px] lg:h-[580px] bg-white rounded-2xl lg:rounded-3xl overflow-hidden relative shadow-xl border border-brand-gold/25 flex flex-col justify-between p-6 sm:p-8 group order-1 lg:order-2">
+              {/* Background ambient liquid glow */}
+              <div
+                className="absolute inset-0 opacity-20 pointer-events-none transition-all duration-700"
+                style={{ background: `radial-gradient(circle at 50% 40%, ${showcaseProduct.liquidColor}, transparent 70%)` }}
+              />
 
-              <div className="absolute bottom-3 w-full text-center text-[10px] text-brand-dark/40 uppercase tracking-[0.2em] pointer-events-none">
-                {isMobile ? 'Touch & drag to rotate bottle' : 'Click & drag to inspect crystal bottle'}
+              {/* Top Bar with Origin & Purity Badges */}
+              <div className="relative z-10 flex items-center justify-between">
+                <div className="bg-brand-dark/90 text-brand-goldLight px-3.5 py-1.5 rounded-xl text-xs backdrop-blur-md border border-brand-gold/20 shadow-sm">
+                  <span className="text-[9px] text-brand-gold block font-mono uppercase tracking-widest">Kannauj Heritage</span>
+                  <span className="font-serif font-bold text-sm">{showcaseProduct.tagline}</span>
+                </div>
+                <span className="bg-brand-gold/15 text-brand-dark font-bold text-[10px] uppercase tracking-wider px-3 py-1.5 rounded-xl border border-brand-gold/30">
+                  100% Botanical
+                </span>
               </div>
 
-              {/* Active showcase badge */}
-              <div className="absolute top-4 left-4 bg-brand-dark/85 text-brand-goldLight px-3 py-1.5 rounded-xl text-xs backdrop-blur-md border border-brand-gold/20">
-                <span className="text-[10px] text-brand-gold block font-mono">SELECTED 3D SHOWCASE</span>
-                <span className="font-serif font-bold text-sm">{showcaseProduct.tagline}</span>
+              {/* Central Luxury Image Presentation with smooth crossfade */}
+              <div className="relative z-10 flex-1 flex items-center justify-center my-4 overflow-hidden">
+                <motion.div
+                  key={showcaseProduct.id}
+                  initial={{ opacity: 0, scale: 0.94 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative max-h-full aspect-square flex items-center justify-center"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}${showcaseProduct.imageUrl}`}
+                    alt={showcaseProduct.name}
+                    className="w-60 h-60 sm:w-72 sm:h-72 lg:w-80 lg:h-80 object-cover rounded-2xl shadow-2xl border-2 border-white/60 group-hover:scale-105 transition-transform duration-700"
+                  />
+                </motion.div>
+              </div>
+
+              {/* Bottom Showcase Info Bar */}
+              <div className="relative z-10 bg-brand-light/95 backdrop-blur-md rounded-xl p-4 border border-brand-gold/20 shadow-sm flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                <div>
+                  <p className="font-serif font-bold text-base text-brand-dark">{showcaseDisplayName}</p>
+                  <p className="text-[11px] text-brand-dark/60 mt-0.5">
+                    <span className="font-semibold text-brand-gold">Notes:</span> {showcaseProduct.notes.top} • {showcaseProduct.notes.heart} • {showcaseProduct.notes.base}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    onClick={() => setSelectedProductForDetail(showcaseProduct)}
+                    className="px-3.5 py-2 rounded-xl border border-brand-gold/40 text-brand-dark text-xs font-semibold hover:bg-white transition-colors min-h-[40px]"
+                  >
+                    Details
+                  </button>
+                  <button
+                    onClick={() => handleAddToCart(showcaseProduct)}
+                    className="px-4 py-2 rounded-xl bg-brand-dark text-brand-goldLight text-xs font-bold uppercase tracking-wider hover:bg-brand-green transition-colors min-h-[40px] flex items-center gap-1.5 shadow-md"
+                  >
+                    <ShoppingBag className="w-3.5 h-3.5" />
+                    Add from ₹{showcaseProduct.variants[0].price.toLocaleString('en-IN')}
+                  </button>
+                </div>
               </div>
             </div>
 
             {/* Showcase Selection List */}
             <div className="w-full lg:w-1/2 order-2 lg:order-1 flex flex-col justify-center space-y-3.5">
               <h3 className="text-lg font-serif font-bold text-brand-dark mb-1">
-                Select a Fragrance to Preview in 3D:
+                Select a Fragrance to Explore:
               </h3>
               {products.slice(0, 4).map((prod) => {
                 const isSelected = showcaseProduct.id === prod.id;
@@ -547,11 +558,12 @@ function App() {
                     }`}
                   >
                     <div className="flex items-center gap-4">
-                      <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm border border-white"
-                        style={{ background: `radial-gradient(circle at 35% 35%, ${prod.accentColor}, ${prod.liquidColor})` }}
-                      >
-                        <span className="font-serif text-white font-bold text-lg">N</span>
+                      <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 shadow-sm border border-brand-gold/30 bg-white">
+                        <img
+                          src={`${import.meta.env.BASE_URL}${prod.imageUrl}`}
+                          alt={prod.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
@@ -560,7 +572,7 @@ function App() {
                           </h4>
                           {isSelected && (
                             <span className="bg-brand-gold/15 text-brand-gold text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
-                              Active 3D
+                              Selected
                             </span>
                           )}
                         </div>
@@ -1025,10 +1037,13 @@ function App() {
               onClick={() => setSelectedProductForDetail(heroProduct)}
               className="flex items-center gap-2.5 cursor-pointer"
             >
-              <div
-                className="w-8 h-8 rounded-full border border-white/20 shrink-0"
-                style={{ background: `radial-gradient(circle at 35% 35%, ${heroProduct.accentColor}, ${heroProduct.liquidColor})` }}
-              />
+              <div className="w-9 h-9 rounded-lg overflow-hidden border border-brand-gold/30 shrink-0 bg-white">
+                <img
+                  src={`${import.meta.env.BASE_URL}${heroProduct.imageUrl}`}
+                  alt={heroProduct.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div className="truncate max-w-[130px]">
                 <p className="text-brand-light text-xs font-medium truncate">{heroProduct.name}</p>
                 <p className="text-brand-gold text-[10px]">from ₹{heroProduct.variants[0].price.toLocaleString('en-IN')}</p>

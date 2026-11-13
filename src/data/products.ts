@@ -29,6 +29,7 @@ export const products: Product[] = [
     category: 'attar',
     liquidColor: '#E05D26',
     accentColor: '#FF8A50',
+    imageUrl: 'sandal-attar.jpg',
     variants: [
       { size: '3ml', price: 510, unit: 'ml' },
       { size: '6ml', price: 980, unit: 'ml' },
@@ -46,6 +47,7 @@ export const products: Product[] = [
     category: 'attar',
     liquidColor: '#d63447',
     accentColor: '#e8637a',
+    imageUrl: 'rose-attar.jpg',
     variants: [
       { size: '3ml', price: 510, unit: 'ml' },
       { size: '6ml', price: 980, unit: 'ml' },
@@ -63,6 +65,7 @@ export const products: Product[] = [
     category: 'attar',
     liquidColor: '#FF8A50',
     accentColor: '#E05D26',
+    imageUrl: 'mogra-attar.jpg',
     variants: [
       { size: '12ml', price: 1800, unit: 'ml' },
       { size: '25ml', price: 3600, unit: 'ml' },
@@ -80,6 +83,7 @@ export const products: Product[] = [
     category: 'attar',
     liquidColor: '#FDF8EC',
     accentColor: '#FF8A50',
+    imageUrl: 'jasmine-attar.jpg',
     variants: [
       { size: '3ml', price: 510, unit: 'ml' },
       { size: '6ml', price: 980, unit: 'ml' },
@@ -115,6 +119,7 @@ export const products: Product[] = [
     category: 'attar',
     liquidColor: '#e091b0',
     accentColor: '#f0a8c4',
+    imageUrl: 'lotus-attar.jpg',
     variants: [
       { size: '3ml', price: 510, unit: 'ml' },
       { size: '6ml', price: 980, unit: 'ml' },
@@ -134,6 +139,7 @@ export const products: Product[] = [
     category: 'floral-water',
     liquidColor: '#f0c0c0',
     accentColor: '#f5d0d0',
+    imageUrl: 'rose-water.jpg',
     variants: [
       { size: '50ml', price: 50, unit: 'ml' },
       { size: '100ml', price: 70, unit: 'ml' },
@@ -152,6 +158,7 @@ export const products: Product[] = [
     category: 'floral-water',
     liquidColor: '#FDF8EC',
     accentColor: '#FF8A50',
+    imageUrl: 'kewda-water.jpg',
     variants: [
       { size: '50ml', price: 50, unit: 'ml' },
       { size: '100ml', price: 70, unit: 'ml' },
@@ -170,6 +177,7 @@ export const products: Product[] = [
     category: 'floral-water',
     liquidColor: '#e8f0e8',
     accentColor: '#c8d8c8',
+    imageUrl: 'khus-water.jpg',
     variants: [
       { size: '50ml', price: 50, unit: 'ml' },
       { size: '100ml', price: 70, unit: 'ml' },
@@ -190,6 +198,7 @@ export const products: Product[] = [
     category: 'dhoop',
     liquidColor: '#5c3a21',
     accentColor: '#E05D26',
+    imageUrl: 'dhoop-cones.jpg',
     variants: [{ size: '50pcs', price: 450, unit: 'box' }],
     benefits: ['Charcoal free', 'Dark Smoke free', 'Pure herbs', 'DEP free'],
     notes: { top: 'Resin', heart: 'Aromatic Herbs', base: 'Sandalwood' },
@@ -203,6 +212,7 @@ export const products: Product[] = [
     category: 'dhoop',
     liquidColor: '#8a5a32',
     accentColor: '#E05D26',
+    imageUrl: 'dhoop-sticks.jpg',
     variants: [{ size: '50pcs', price: 550, unit: 'box' }],
     benefits: ['Charcoal free', 'Dark Smoke free', 'Temple flowers', 'DEP free'],
     notes: { top: 'Temple Flowers', heart: 'Resins', base: 'Woods' },
@@ -218,6 +228,7 @@ export const products: Product[] = [
     category: 'raw-material',
     liquidColor: '#5c3a21',
     accentColor: '#8a5a32',
+    imageUrl: 'agarwood-chips.jpg',
     variants: [
       { size: '25g', price: 1800, unit: 'g' },
       { size: '50g', price: 3400, unit: 'g' },
@@ -235,6 +246,7 @@ export const products: Product[] = [
     category: 'raw-material',
     liquidColor: '#E05D26',
     accentColor: '#FF8A50',
+    imageUrl: 'sandalwood-powder.jpg',
     variants: [
       { size: '50g', price: 850, unit: 'g' },
       { size: '100g', price: 1600, unit: 'g' }
